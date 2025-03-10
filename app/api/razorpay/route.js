@@ -21,7 +21,7 @@ export async function POST(request){
    if(xx)
    {
     const updatePayment=await payment.findOneAndUpdate({oid:p.oid},{done:true},{new:true});
-    return NextResponse.redirect(`http://localhost:3000/${updatePayment.to_user}/?paymentDone=true`);
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_REDIRECT_URL}/${updatePayment.to_user}/?paymentDone=true`);
    }
    else {
      return NextResponse.json({success:false,message:"Payment varification faild"});
