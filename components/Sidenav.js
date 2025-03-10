@@ -14,7 +14,7 @@ function Sidenav({ handler }) {
   const { data: session } = useSession();
   const default_image_url="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b";
   return (
-    <div className="fixed w-[100%] h-[100vh] bg-zinc-900 z-10 text-white">
+    <div className="fixed w-[100%] pt-4 h-[100vh] bg-zinc-900 z-10 text-white">
       <div className=" h-14 flex items-center justify-between px-5">
       {!session && <div className="flex items-center gap-x-3">
           <Image width={100} height={100} className="size-10 rounded-full" src={default_image_url} alt="this is an image" />
@@ -24,7 +24,7 @@ function Sidenav({ handler }) {
           <Image width={100} height={100} className="size-10 rounded-full" src={session.user.image || default_image_url} alt="this is an image" />
           <span>Welcome {session.user.name}</span>
         </div>}
-        <IoIosCloseCircle onClick={() => handler(false)} className="text-white text-lg" />
+        <IoIosCloseCircle onClick={() => handler(false)} className="text-white text-2xl" />
       </div>
       <div className=" text-white mt-3">
         <ul className="flex flex-col gap-y-4">
