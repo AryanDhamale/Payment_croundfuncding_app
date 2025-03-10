@@ -18,7 +18,6 @@ export async function POST(request){
    const secret=u.rayzorpaysecret;
    
    const xx=validatePaymentVerification({"order_id":p.oid,"payment_id":body.razorpay_payment_id}, body.razorpay_signature,secret);
-   console.log(xx);
    if(xx)
    {
     const updatePayment=await payment.findOneAndUpdate({oid:p.oid},{done:true},{new:true});

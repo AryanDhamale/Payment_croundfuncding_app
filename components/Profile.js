@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useCallback } from "react";
 import { initiate, fetchUser, fetchpayments } from "@/actions/userActions";
 import Script from "next/script";
 import { ToastContainer, toast } from 'react-toastify';
 import { Bounce } from "react-toastify";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
+import Image from "next/image";
 
 function Profile({ userName }) {
     const [paymentform, setPaymentform] = useState({ name: "", amount: "", message: "" });
@@ -27,13 +28,20 @@ function Profile({ userName }) {
         return;
     }
 
+    const getData = useCallback(async () => {
+        let user = await fetchUser(userName);
+        setCurrentuser(user);
+        let payment = await fetchpayments(userName);
+        setpayments(payment);
+    },[]);
+
 
     useEffect(() => {
         if (showparams.get("paymentDone") == "true") {
             show("Congradulation,payment has done !", toast.success);
         }
         getData();
-    }, []);
+    }, [getData,showparams]);
 
     const show = (message, type) => {
         type(message, {
@@ -47,14 +55,6 @@ function Profile({ userName }) {
             theme: "dark",
             transition: Bounce,
         });
-    }
-
-
-    const getData = async () => {
-        let user = await fetchUser(userName);
-        setCurrentuser(user);
-        let payment = await fetchpayments(userName);
-        setpayments(payment);
     }
 
 
@@ -100,10 +100,10 @@ function Profile({ userName }) {
             <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
             <div className="text-white realtive">
                 <div className="w-full">
-                    <img className="w-[100%] object-cover h-[40vh]" src={currentuser.coverPic || "/coverPic.jpeg"} alt="this is an IMAGE" />
+                    <Image width={100} height={100} className="w-[100%] object-cover h-[40vh]" src={currentuser.coverPic || "/coverPic.jpeg"} alt="this is an IMAGE" />
                 </div>
                 <div className="absolute text-center flex flex-col justify-center items-center gap-y-2 py-2 px-2 - left-1/2 transform -translate-x-1/2 top-1/2  -translate-y-[38%]">
-                    <img className="size-[10rem] rounded-full" src={currentuser.profilePic || "/profilePic.jpg"} alt="this is an profile image" />
+                    <Image width={100} height={100} className="size-[10rem] rounded-full" src={currentuser.profilePic || "/profilePic.jpg"} alt="this is an profile image" />
                     <h2 className="text-3xl font-normal">{userName}</h2>
                     <p className="text-sm font-medium">let help to your favorite creater {currentuser.username}</p>
                     <p className="text-xs font-normal opacity-50">{payments.length} raised . &#8377;{payments.reduce((acc, curr) => Number(curr.amount) + acc, 0)}</p>
@@ -115,14 +115,14 @@ function Profile({ userName }) {
                     <div className="flex flex-col justify-center items-start gap-y-3">
                         {payments.length == 0 &&
                             <p className="flex justify-start items-center gap-x-2">
-                                <img width={30} className="rounded-full" src="/user.webp" alt="this is an user image" />
+                                <Image height={30} width={30} className="rounded-full" src="/user.webp" alt="this is an user image" />
                                 <span>No Transition found in Database</span>
                             </p>
                         }
                         {
                             payments.map((ele, idx) =>
                                 <p className="flex justify-start items-center gap-x-2" key={idx}>
-                                    <img width={30} className="rounded-full" src="/user.webp" alt="this is an user image" />
+                                    <Image height={30} width={30} className="rounded-full" src="/user.webp" alt="this is an user image" />
                                     <span>{ele.name} <b>{ele.amount}</b> with message  {ele.message}</span>
                                 </p>
                             )

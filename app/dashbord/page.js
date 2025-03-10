@@ -8,8 +8,8 @@ import { Bounce } from "react-toastify";
 
 
 function Dashbord() {
-    const { data: session } = useSession();
-    const [formdata, setformdata] = useState({name:"",email:"",username:"",profilePic:"",coverPic:"",razorpayId:"",rayzorpaysecret:""});
+    const { data: session } = useSession(); 
+    const [formdata, setformdata] = useState({}); // 
     const router = useRouter();
     useEffect(() => {
         if (!session) {
@@ -19,7 +19,6 @@ function Dashbord() {
 
         async function findUserdata() {
             let u = await fetchUser(session.user.name);
-            console.log(u);
             setformdata(u);
         }
 

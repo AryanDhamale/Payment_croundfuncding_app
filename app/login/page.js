@@ -16,7 +16,7 @@ function Login()
         if(session){
             router.push('/dashbord');
         }
-    },[session]);
+    },[session,router]);
     return (
         <div className="text-white h-[75vh] flex justify-center items-center">
             <div className="border border-gray-700 w-[95%] md:w-[40%] lg:w-[30%]  flex flex-col justify-center items-center gap-y-4 px-4 py-16 rounded-sm">
