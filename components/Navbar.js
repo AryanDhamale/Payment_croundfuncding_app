@@ -1,11 +1,12 @@
 "use client";
 import { SiThunderbird } from "react-icons/si";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Dropdown from "./Dropdown";
 import Link from "next/link";
 import { AiFillAppstore } from "react-icons/ai";
 import Sidenav from "./Sidenav";
 import { useState } from "react";
+import Search from "@/components/Search";
 
 function Navbar()
 {
@@ -14,13 +15,14 @@ function Navbar()
     return (
         <>
         {visible && <Sidenav handler={setvisible}/>}
-        <div className="text-white flex justify-between items-center h-16 px-6">
-            <div className="flex justify-center items-center gap-x-3">
-                <SiThunderbird className="text-lg"/>
+        <div className="text-white  flex justify-between items-center h-16 px-1 sm:px-6">
+            <div className="flex justify-center items-center gap-x-3 w-9/10 md:w-auto">
+                <SiThunderbird className="text-lg hidden sm:block"/>
                 <span className="italic text-base font-medium">BlackBird</span>
+                <Search/>
             </div>
             <div>
-                <ul className="hidden sm:flex justify-center items-center gap-x-6">
+                <ul className="hidden  md:flex justify-center items-center gap-x-6">
                     <Link href='/' className="cursor-pointer">Home</Link>
                     <Link href='/about' className="cursor-pointer">About</Link>
                     <Link href='/' className="cursor-pointer">Project</Link>
@@ -30,7 +32,7 @@ function Navbar()
                   {session && <Dropdown/>}
                 </ul>
             </div>
-            <div className="block sm:hidden">
+            <div className="block md:hidden">
              <AiFillAppstore onClick={()=>setvisible(true)} className="text-3xl"/>
             </div>
         </div>

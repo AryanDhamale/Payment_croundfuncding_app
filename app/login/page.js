@@ -16,7 +16,7 @@ function Login() {
         if (session) {
             router.push('/dashbord');
         }
-    }, [session, router]);
+    }, [session]);
 
 
     const show = (message, type) => {

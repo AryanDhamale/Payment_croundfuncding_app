@@ -52,5 +52,16 @@ export const updateUserprofile = async (data, oldUsername) => {
     }
     // update also here //
     await user.updateOne({email:newData.email},newData);
-    return {message:"profile has been updated!",stauts:true};
+    return {message:"profile has been updated!",stauts:true}
+}
+
+
+export const getUserforSearch=async()=>{
+  await connetDb(); 
+  let arrofu= await user.find({
+    rayzorpaysecret : {$exists : true },
+    razorpayId : {$exists : true}
+  }).lean();
+  arrofu=arrofu.map((ele,idx)=>ele.username);
+ return arrofu;
 }
