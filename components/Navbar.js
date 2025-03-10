@@ -15,10 +15,10 @@ function Navbar()
     return (
         <>
         {visible && <Sidenav handler={setvisible}/>}
-        <div className="text-white  flex justify-between items-center h-16 px-1 sm:px-6">
-            <div className="flex justify-center items-center gap-x-3 w-9/10 md:w-auto">
+        <div className="text-white  flex justify-between items-center h-16 px-0 sm:px-6">
+            <div className="flex md:justify-center items-center gap-x-1 md:gap-x-3 w-9/10 md:w-auto">
                 <SiThunderbird className="text-lg hidden sm:block"/>
-                <span className="italic text-base font-medium">BlackBird</span>
+                <span className="ps-1 sm:ps-0 italic text-base font-medium">BlackBird</span>
                 <Search/>
             </div>
             <div>
@@ -33,7 +33,7 @@ function Navbar()
                 </ul>
             </div>
             <div className="block md:hidden">
-             <AiFillAppstore onClick={()=>setvisible(true)} className="text-3xl"/>
+             <AiFillAppstore onClick={()=>setvisible(true)} className="text-3xl pe-1 sm:pe-0"/>
             </div>
         </div>
         </>

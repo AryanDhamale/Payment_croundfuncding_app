@@ -27,8 +27,8 @@ function Search()
         setData();
     },[]);
     return (
-        <div className="ms-0.5 sm:ms-4 text-white relative">
-            <div className="w-[16rem] sm:w-[20rem]  relative">
+        <div className="ms-0 sm:ms-4 text-white relative">
+            <div className="w-[15rem] sm:w-[20rem]  relative">
                 <input onChange={handleOnchage} className="border-2 border-slate-700 outline-none rounded-full w-full px-4 py-2" type="text" placeholder="Enter your creater name" />
                 <LuSearch className="hover:bg-slate-700 p-1.5 rounded-full cursor-pointer text-3xl text-white font-semibold absolute right-2 top-1/2 -transform -translate-y-1/2" onClick={setData}/>
             </div>
