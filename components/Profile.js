@@ -68,7 +68,7 @@ function Profile({ userName }) {
             name: userName,
             description: 'Test Transaction',
             order_id: a.id, // This is the order_id created in the backend
-            callback_url: process.env.NEXT_PUBLIC_REDIRECT_URL, // Your success URL
+            callback_url: process.env.NEXT_PUBLIC_REDIRECT_URL+"api/razorpay", // Your success URL
             prefill: {
                 name: paymentForm.name,
                 email: 'gaurav.kumar@example.com',
