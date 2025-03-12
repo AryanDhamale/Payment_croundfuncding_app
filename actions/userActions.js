@@ -60,7 +60,7 @@ export const getUserforSearch=async()=>{
   await connetDb(); 
   let arrofu= await user.find({
     rayzorpaysecret : {$exists : true },
-    razorpayId : {$exists : true}
+    rayzorpayId : {$exists : true}
   }).lean();
   arrofu=arrofu.map((ele,idx)=>ele.username);
  return arrofu;

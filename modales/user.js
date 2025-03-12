@@ -6,7 +6,7 @@ const userScheme=new Schema({
     username : {type : String, required : true},
     profilePic : {type : String},
     coverPic : {type : String},
-    razorpayId: {type:String},
+    rayzorpayId: {type:String},
     rayzorpaysecret:{type:String},
     created_At : {type : Date, default : Date.now},
     updated_At : {type : Date ,default : Date.now},
