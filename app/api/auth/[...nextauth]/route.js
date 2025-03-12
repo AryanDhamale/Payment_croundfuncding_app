@@ -26,8 +26,6 @@ const authOptions = NextAuth({
       return true;
     },
     async redirect({ url, baseUrl }) {
-      console.log("url->",url);
-      console.log("baseUrl",baseUrl);
       return process.env.NEXTAUTH_URL; // Ensures it redirects to the correct domain
     },
    }

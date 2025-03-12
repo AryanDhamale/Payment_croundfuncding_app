@@ -7,7 +7,7 @@ import user from "@/modales/user";
 export const initiate = async (amount, to_username, paymentForm) => {
     await connetDb();
     const u=await user.findOne({username:to_username});
-    var instance = new Razorpay({ key_id: u.razorpayId, key_secret: u.rayzorpaysecret });
+    var instance = new Razorpay({ key_id: u.rayzorpayId, key_secret: u.rayzorpaysecret });
     var options = {
         amount: amount * 100,  // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",

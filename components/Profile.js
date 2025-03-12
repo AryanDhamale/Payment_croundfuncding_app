@@ -20,7 +20,7 @@ function Profile({ userName }) {
             return;
         }
 
-        if (!currentuser.razorpayId || !currentuser.rayzorpaysecret) {
+        if (!currentuser.rayzorpayId || !currentuser.rayzorpaysecret) {
             show("this user can't accept the payment now", toast.error);
             return;
         }
@@ -62,7 +62,7 @@ function Profile({ userName }) {
     const payment = async (amount, userName, paymentForm) => {
         let a = await initiate(amount, userName, paymentForm);
         const options = {
-            key: currentuser.razorpayId, // Replace with your Razorpay key_id
+            key: currentuser.rayzorpayId, // Replace with your Razorpay key_id
             amount: amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: 'INR',
             name: userName,

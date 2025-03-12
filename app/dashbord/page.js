@@ -78,7 +78,7 @@ function Dashbord() {
                             <input className="border-2 border-gray-800 focus:bg-gray-800 rounded-sm outline-0 w-full py-2 px-3.5" type="text" placeholder="Cover picture *url" onChange={handleOnchange} value={formdata.coverPic || ""} name="coverPic" />
                         </div>
                         <div>
-                            <input className="border-2 border-gray-800 focus:bg-gray-800 rounded-sm outline-0 w-full py-2 px-3.5" type="text" placeholder="Rayzorpay ID" onChange={handleOnchange} value={formdata.razorpayId || ""} name="razorpayId" required />
+                            <input className="border-2 border-gray-800 focus:bg-gray-800 rounded-sm outline-0 w-full py-2 px-3.5" type="text" placeholder="Rayzorpay ID" onChange={handleOnchange} value={formdata.rayzorpayId || ""} name="rayzorpayId" required />
                         </div>
                         <div>
                             <input className="border-2 border-gray-800 focus:bg-gray-800 rounded-sm outline-0 w-full py-2 px-3.5" type="text" placeholder="Rayzorpay Secret" onChange={handleOnchange} value={formdata.rayzorpaysecret || ""} name="rayzorpaysecret" required />
