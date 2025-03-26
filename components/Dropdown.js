@@ -13,15 +13,15 @@ function Dropdown()
 {
     const {data:session}=useSession();
     const [visible,setVisible]=useState(false);
-    const [image,setImage]=useState("https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b")
-    useEffect(()=>{
-        if(session)
-        setImage(session.user.image);
-    },[session]);
+    const colors = ["bg-rose-500", "bg-blue-500", "bg-emerald-500", "bg-yellow-500"];
+    const bgColor= Math.floor(Math.random()*colors.length);
+
     return (
         <div>
-             <div>
-             <Image onClick={()=>setVisible(!visible)} onBlur={()=>setVisible(false)}  src={image} className="relative border-2 border-gray-800 rounded-full cursor-pointer" width={44} height={44} alt="this is image" />
+             <div className="size-10 relative rounded-full" onClick={()=>setVisible(!visible)} onBlur={()=>setVisible(false)}>
+             {
+               session.user.image ?  <Image src={session.user.image} className="border-2 border-gray-800 rounded-full cursor-pointer w-full h-full" width={44} height={44} alt="this is image" />  : <div className={`w-full h-full text-white ${bgColor} rounded-full flex justify-center items-center text-lg`}>TD</div>
+             }
              </div>
             {visible && <div className="fixed border-2 border-gray-700 w-[10rem] rounded-sm right-8 top-18 py-2" >
               <Link href={`/${session.user.name}`} className="hover:bg-gray-900 flex justify-start items-center gap-x-3 px-3 py-2" ><FaUser/>Profile</Link>
