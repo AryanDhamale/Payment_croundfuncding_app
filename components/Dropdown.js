@@ -20,7 +20,7 @@ function Dropdown()
         <div>
              <div className="size-10 relative rounded-full" onClick={()=>setVisible(!visible)} onBlur={()=>setVisible(false)}>
              {
-               session.user.image ?  <Image src={session.user.image} className="border-2 border-gray-800 rounded-full cursor-pointer w-full h-full" width={44} height={44} alt="this is image" />  : <div className={`w-full h-full text-white ${bgColor} rounded-full flex justify-center items-center text-lg`}>TD</div>
+               session.user.image ?  <Image src={session.user.image} className="border-2 border-gray-800 rounded-full cursor-pointer w-full h-full" width={44} height={44} alt="this is image" />  : <div className={`w-full h-full text-white ${bgColor} rounded-full flex justify-center items-center text-lg`}>{session.user.name[0]}</div>
              }
              </div>
             {visible && <div className="fixed border-2 border-gray-700 w-[10rem] rounded-sm right-8 top-18 py-2" >
